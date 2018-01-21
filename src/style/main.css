@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(221, 235, 230);
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+
+ button {
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: rgb(154, 212, 154);
+    font-size: 1em;
+    border-radius: 7px;
+ }
+
+#result, #verifyResult {
+    padding-left: 10px;
+ }
