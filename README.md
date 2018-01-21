@@ -1,4 +1,4 @@
-# rxjs-demo
+# task-calculate-expressions
 
 1. git clone https://github.com/OlexandrBlanar/task-calculate-expressions
 2. cd task-calculate-expressions
