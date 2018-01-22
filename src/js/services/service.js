@@ -1,11 +1,11 @@
 import * as constants from './constants';
 import { calculate } from './utils';
 
-export default class DataServisec {
+export default class DataService {
 
 	constructor() {
 		this.resExp = [];
-		this.expressions = {};
+		this.expressions = [];
 		this.id = '';
 	}
 
@@ -27,12 +27,12 @@ export default class DataServisec {
 	}
 
 	postResult() {
-		let reqData = JSON.stringify({
+		const reqData = JSON.stringify({
 			id: this.id,
 			results: this.resExp,
 		});
 
-		let fetchData = {
+		const fetchData = {
 			method: 'POST',
 			body: reqData,
 			headers: new Headers(constants.httpHeaders)
@@ -40,6 +40,7 @@ export default class DataServisec {
 
 		return fetch(constants.url, fetchData)
 			.then((response) => response.json())
+			.catch(err => console.log(err));
 	}
 
 }

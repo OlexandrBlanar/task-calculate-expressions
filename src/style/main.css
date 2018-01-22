@@ -16,11 +16,16 @@ body {
     height: 40px;
     margin-top: 10px;
     margin-bottom: 15px;
-    background-color: rgb(154, 212, 154);
+    background-color: rgb(66, 160, 132);
+    border-color: rgb(66, 160, 132);
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
     font-size: 1em;
-    border-radius: 7px;
- }
+    font-weight: 500;
+}
 
 #result, #verifyResult {
-    padding-left: 10px;
+    padding-left: 25px;
  }

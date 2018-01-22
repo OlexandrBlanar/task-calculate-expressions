@@ -1,32 +1,32 @@
-import Services from '../services/service';
+import Service from '../services/service';
 
 export default function app() {
 
-	const dataServices = new Services();
+	const dataServices = new Service();
 
 	function addElement(parentElem, data) {
-		let newUl = document.createElement('ul');
+		const newUl = document.createElement('ul');
 		if (parentElem.firstChild) {
 			parentElem.removeChild(parentElem.firstChild);
 		}
 		let refUl = parentElem.appendChild(newUl);
-		for(let i = 0; i < data.length; i++) {
-			let newLi = document.createElement('li');
-			newLi.innerText = data[i];
+		data.forEach((item) => {
+			const newLi = document.createElement('li');
+			newLi.innerText = item;
 			refUl.appendChild(newLi);
-		}
+		});
 	}
 
-	document.getElementById('btn-expressions').addEventListener('click', () => {
+	document.getElementById('btnExpressions').addEventListener('click', () => {
 		dataServices.getExp()
 			.then(data => addElement(document.getElementById('expressions'), data));
 	});
 
-	document.getElementById('btn-calculate').addEventListener('click', () => {
+	document.getElementById('btnCalculate').addEventListener('click', () => {
 		document.getElementById('result').innerText = dataServices.calculateExp().join(', ');
 	});
 
-	document.getElementById('btn-verify').addEventListener('click', () => {
+	document.getElementById('btnVerify').addEventListener('click', () => {
 		dataServices.postResult()
 			.then(data => document.getElementById('verifyResult').innerText = data.passed);
 	});
