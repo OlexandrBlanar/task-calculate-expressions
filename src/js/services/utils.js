@@ -1,6 +1,6 @@
 export function calculate(exp) {
 
-	let arrRes = [];
+	const arrRes = [];
 
 	for (let j = 0; j < exp.length; j++) {
 		const arr = exp[j].split(' ');
