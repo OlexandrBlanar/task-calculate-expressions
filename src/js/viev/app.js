@@ -20,10 +20,12 @@ export default function app() {
 	document.getElementById('btnExpressions').addEventListener('click', () => {
 		dataServices.getExp()
 			.then(data => addElement(document.getElementById('expressions'), data));
+		document.getElementById('btnCalculate').removeAttribute('disabled');
 	});
 
 	document.getElementById('btnCalculate').addEventListener('click', () => {
 		document.getElementById('result').innerText = dataServices.calculateExp().join(', ');
+		document.getElementById('btnVerify').removeAttribute('disabled');
 	});
 
 	document.getElementById('btnVerify').addEventListener('click', () => {
