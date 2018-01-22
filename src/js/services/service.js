@@ -16,7 +16,16 @@ export default class DataService {
 			.then(data => {
 				this.expressions = data.expressions;
 				this.id = data.id;
-				return data.expressions;
+				this.calculateExp();
+				
+				return this.postResult();
+			})
+			.then(data => {
+				return {
+					expressions: this.expressions,
+					resExp: this.resExp,
+					passed: data.passed
+				}
 			})
 			.catch(err => console.log(err));
 	}

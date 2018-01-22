@@ -6,9 +6,6 @@ export default function app() {
 
 	function addElement(parentElem, data) {
 		const newUl = document.createElement('ul');
-		if (parentElem.firstChild) {
-			parentElem.removeChild(parentElem.firstChild);
-		}
 		let refUl = parentElem.appendChild(newUl);
 		data.forEach((item) => {
 			const newLi = document.createElement('li');
@@ -17,19 +14,20 @@ export default function app() {
 		});
 	}
 
-	document.getElementById('btnExpressions').addEventListener('click', () => {
+	const elExpressions = document.getElementById('expressions');
+	const elResult = document.getElementById('result');
+	const elVerify = document.getElementById('verifyResult');
+	const elBtnExpressions = document.getElementById('btnExpressions');
+
+	elBtnExpressions.addEventListener('click', () => {
+		elExpressions.innerHTML = '';
+		elResult.innerText = '';
+		elVerify.innerText = '';
 		dataServices.getExp()
-			.then(data => addElement(document.getElementById('expressions'), data));
-		document.getElementById('btnCalculate').removeAttribute('disabled');
-	});
-
-	document.getElementById('btnCalculate').addEventListener('click', () => {
-		document.getElementById('result').innerText = dataServices.calculateExp().join(', ');
-		document.getElementById('btnVerify').removeAttribute('disabled');
-	});
-
-	document.getElementById('btnVerify').addEventListener('click', () => {
-		dataServices.postResult()
-			.then(data => document.getElementById('verifyResult').innerText = data.passed);
+			.then(data => {
+				addElement(elExpressions, data.expressions);
+				elResult.innerText = data.resExp.join(', ');
+				elVerify.innerText = data.passed;
+			});
 	});
 }
